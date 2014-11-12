@@ -4,6 +4,7 @@ Feature: Simple list interaction
         Given a user
         When a user visits the site
         Then the page title contins 'To-Do'
+        And finish test
 
 
 # Edith has heard about a cool new online to-do app. 

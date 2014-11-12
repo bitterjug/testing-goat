@@ -14,3 +14,7 @@ def visit(context):
 @then('the page title contins \'{text}\'')
 def title_content(context, text):
     assert text in context.browser.title.decode()
+
+@then('finish test')
+def unfinished(context):
+    assert false
