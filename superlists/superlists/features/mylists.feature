@@ -1,15 +1,21 @@
 Feature: Simple list interaction
 
     Scenario: Visitor notices 'to-do' site
+        # Edith has heard about a cool new online to-do app. 
+        # She goes to # check out its homepage and notices 'to-do' 
+        # in the page title.
         Given a user
-        When a user visits the site
+        When user visits the site
         Then the page title and header contins 'To-Do'
-        And finish test
+        AND user is invited to enter an item
 
+    Scenario: Visitor can enter new to-do
+        # She is invited to enter a to-do item straight away
+        Given a user
+        When user visits the site
+        And user enters 'Buy peacock feathers'
+        Then 'Buy peacock feathers' is in to-do list
 
-# Edith has heard about a cool new online to-do app. 
-# She goes to # check out its homepage and notices 'to-do' in the page title.
-# She is invited to enter a to-do item straight away
 
 # She types "Buy peacock feathers" into a text box (Edith's hobby
 # is tying fly-fishing lures)
