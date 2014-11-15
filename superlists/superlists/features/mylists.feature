@@ -3,7 +3,7 @@ Feature: Simple list interaction
     Scenario: Visitor notices 'to-do' site
         Given a user
         When a user visits the site
-        Then the page title contins 'To-Do'
+        Then the page title and header contins 'To-Do'
         And finish test
 
 
