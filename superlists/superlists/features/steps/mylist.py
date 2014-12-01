@@ -40,8 +40,9 @@ def enter_todo(context, text):
 
 @then('\'{text}\' is in to-do list')
 def verify_todo_content(context, text):
-    rows = context.browser.find_by_id('id_list_table').table.find_by_tag('tr')
-    assert any(row.text == '1. Buy peacock feathers' for row in rows)
+    rows = context.browser.find_by_id('id_list_table').find_by_tag('tr')
+    assert any(row.text == '1. Buy peacock feathers' for row in rows),\
+        "New item didn not appear in table"
 
 
 @then('finish test')
