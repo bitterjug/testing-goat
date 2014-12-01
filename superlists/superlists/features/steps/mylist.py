@@ -35,7 +35,7 @@ def input_box_present(context):
 
 @when('user enters \'{text}\'')
 def enter_todo(context, text):
-    context.browser.find_by_id('id_new_item').fill(text)
+    context.browser.find_by_id('id_new_item').type(text)
 
 
 @then('\'{text}\' is in to-do list')
