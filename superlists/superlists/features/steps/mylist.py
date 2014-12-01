@@ -29,11 +29,8 @@ def title_and_header_contain(context, text):
 
 @then('user is invited to enter an item')
 def input_box_present(context):
-    inputbox = context.browser.find_by_id('id_new_item')
-    self.assertEqual(
-        inputbox.get_attribute('placeholder'),
-        'Enter a to-do item'
-    )
+    inputbox = context.browser.find_by_id('id_new_item').first
+    assert inputbox['placeholder'] == 'Enter a to-do item'
 
 
 @when('user enters \'{text}\'')
@@ -44,7 +41,7 @@ def enter_todo(context, text):
 @then('\'{text}\' is in to-do list')
 def verify_todo_content(context, text):
     rows = context.browser.find_by_id('id_list_table').table.find_by_tag('tr')
-    self.assertTrue(any(row.text == '1. Buy peacock feathers') for row in rows)
+    assert any(row.text == '1. Buy peacock feathers' for row in rows)
 
 
 @then('finish test')
