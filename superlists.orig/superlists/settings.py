@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'sf2qsm1(kiiiofmzg%-iina%u&=n=%$125(0)5&9lu)5khqs1!'
+SECRET_KEY = 'fc73nurc8eu1oq#9-)iy8)l@r!qov5&#=d84ahj39k3k=n@r_u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,6 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_behave',
+    'superlists',
+    'lists',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -81,3 +84,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
