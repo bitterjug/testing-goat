@@ -6,7 +6,6 @@ print("env")
 
 def before_all(context):
     print("before all")
-    import ipdb; ipdb.set_trace();
     context.browser = Browser()
     context.home_url = context.config.server_url
 
