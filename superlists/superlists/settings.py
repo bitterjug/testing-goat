@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django_behave',
     'superlists',
     'bdd_tests',
+    'lists',
 )
 
 MIDDLEWARE_CLASSES = (
