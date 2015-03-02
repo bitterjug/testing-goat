@@ -23,7 +23,8 @@ Feature: Simple list interaction
     Scenario: Visitor can enter two to-dos
         Given user has entered 'Buy peacock feathers'
         When user enters 'Use peacock feathers to make a fly'
-        Then '2. Use peacock feathers to make a fly' is in to-do list
+        Then '1. Buy peacock feathers' is in to-do list
+        And '2. Use peacock feathers to make a fly' is in to-do list
 
 
 
