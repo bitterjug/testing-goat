@@ -38,14 +38,17 @@ def enter_todo(context, text):
     context.browser.find_by_id('id_new_item').type(text + '\n')
 
 
+@Given('user has entered \'{text}\'')
+def previously_entered(context, text):
+    visit(context)
+    enter_todo(context, text)
+
+
 @then('\'{text}\' is in to-do list')
 def verify_todo_content(context, text):
     table = context.browser.find_by_id('id_list_table')
     rows = table.find_by_tag('tr')
-    context.tc.assertIn(
-        '1. Buy peacock feathers',
-        [row.text for row in rows]
-    )
+    context.tc.assertIn(text, [row.text for row in rows])
 
 
 @then('finish test')

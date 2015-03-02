@@ -11,17 +11,21 @@ Feature: Simple list interaction
 
     Scenario: Visitor can enter new to-do
         # She is invited to enter a to-do item straight away
+        # She types "Buy peacock feathers" into a text box (Edith's hobby
+        # is tying fly-fishing lures)
         Given a user
         When user visits the site
         And user enters 'Buy peacock feathers'
-        Then 'Buy peacock feathers' is in to-do list
+        # When she hits enter, the page updates, and now the page lists
+        # "1: Buy peacock feathers" as an item in a to-do list
+        Then '1. Buy peacock feathers' is in to-do list
+
+    Scenario: Visitor can enter two to-dos
+        Given user has entered 'Buy peacock feathers'
+        When user enters 'Use peacock feathers to make a fly'
+        Then '2. Use peacock feathers to make a fly' is in to-do list
 
 
-# She types "Buy peacock feathers" into a text box (Edith's hobby
-# is tying fly-fishing lures)
-
-# When she hits enter, the page updates, and now the page lists
-# "1: Buy peacock feathers" as an item in a to-do list
 
 # There is still a text box inviting her to add another item. She
 # enters "Use peacock feathers to make a fly" (Edith is very methodical)
