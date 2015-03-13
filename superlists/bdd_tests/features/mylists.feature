@@ -16,16 +16,24 @@ Feature: Simple list interaction
         Given a user
         When user visits the site
         And user enters 'Buy peacock feathers'
-        # When she hits enter, the page updates, and now the page lists
-        # "1: Buy peacock feathers" as an item in a to-do list
-        Then '1. Buy peacock feathers' is in to-do list
+        Then user is taken to a new URL
+        And '1. Use peacock feathers to make a fly' is in to-do list
 
     Scenario: Visitor can enter two to-dos
+        Given a user
         Given user has entered 'Buy peacock feathers'
         When user enters 'Use peacock feathers to make a fly'
         Then '1. Buy peacock feathers' is in to-do list
         And '2. Use peacock feathers to make a fly' is in to-do list
 
+
+    Scenario: Second visitor does not see first user's items
+        Given a user
+        When user visits the site
+        And user enters 'Buy peacock feathers'
+        And a new user
+        And user visits the site
+        Then 'Buy peacock feathers' is not in to-do list
 
 
 # There is still a text box inviting her to add another item. She

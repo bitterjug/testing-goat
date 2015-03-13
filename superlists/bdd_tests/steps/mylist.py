@@ -1,9 +1,19 @@
+from splinter import Browser
 from behave import given, when, then
 
 
 @given('a user')
-def null(context):
-    pass
+def set_up_session(context):
+    try:
+        context.browser.quit()
+    except AttributeError:
+        pass
+    context.browser = Browser()
+
+
+@when('a new user')
+def set_up_new_session(context):
+    set_up_new_session(context)
 
 
 @when('user visits the site')
@@ -19,6 +29,14 @@ def header_content(context, text):
 @then('the page title contins \'{text}\'')
 def title_content(context, text):
     assert text in context.browser.title.decode()
+
+
+@then('user is taken to a new URL')
+def at_list_url(context):
+    context.tc.assertRegex(
+        context.browser.url,
+        '/lists/.+'
+    )
 
 
 @then('the page title and header contins \'{text}\'')
@@ -38,7 +56,7 @@ def enter_todo(context, text):
     context.browser.find_by_id('id_new_item').type(text + '\n')
 
 
-@Given('user has entered \'{text}\'')
+@given('user has entered \'{text}\'')
 def previously_entered(context, text):
     visit(context)
     enter_todo(context, text)
@@ -49,6 +67,12 @@ def verify_todo_content(context, text):
     table = context.browser.find_by_id('id_list_table')
     rows = table.find_by_tag('tr')
     context.tc.assertIn(text, [row.text for row in rows])
+
+
+@then('\'{text}\' is not in to-do list')
+def verify_not_in_page(context, text):
+    page_text = context.browser.find_by_tag('body')
+    context.tc.assertNotIn(text, page_text)
 
 
 @then('finish test')

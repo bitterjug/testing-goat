@@ -1,19 +1,18 @@
-from splinter import Browser
 from unittest import TestCase
 from django.core.management import call_command
 
 
-print("env")
-
-
 def before_all(context):
-    context.browser = Browser()
     context.home_url = context.config.server_url
-    context.tc = TestCase() # for the assert methods
+    context.tc = TestCase()  # for the assert methods
 
 
-def after_all(context):
-    context.browser.quit()
+def after_scenario(context, feature):
+    try:
+        context.browser.quit()
+    except AttributeError:
+        pass
+
 
 def before_scenario(context, feature):
     """ Run each scenario in a separate database copy """
