@@ -7,6 +7,18 @@ from .views import home_page
 from .models import Item
 
 
+class ListViewTest(TestCase):
+
+    def test_displays_all_list_items(self):
+        Item.objects.create(text='Item 1')
+        Item.objects.create(text='Item 2')
+
+        response = self.client.get('/lists/unique-list/')
+
+        self.assertContains(response, 'Item 1')
+        self.assertContains(response, 'Item 2')
+
+
 class HomePageTest(TestCase):
 
     def test_root_url_resolves_to_home_page_View(self):
@@ -24,7 +36,7 @@ class HomePageTest(TestCase):
         request.method = 'POST'
         request.POST['item_text'] = 'A new list item'
 
-        response = home_page(request)
+        home_page(request)
 
         self.assertEqual(Item.objects.count(), 1)
         new_item = Item.objects.first()
@@ -38,7 +50,7 @@ class HomePageTest(TestCase):
         response = home_page(request)
 
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['location'], '/')
+        self.assertEqual(response['location'], '/lists/unique-list/')
 
     def test_home_page_only_saves_items_when_necessary(self):
         request = HttpRequest()

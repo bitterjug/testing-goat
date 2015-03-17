@@ -1,7 +1,10 @@
-from django.conf.urls import patterns, include, url
-from django.contrib import admin
+from django.conf.urls import patterns, url
+from lists.views import (
+    view_list,
+    home_page,
+)
 
 urlpatterns = patterns('',
-    url(r'^$', 'lists.views.home_page', name='home')
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', home_page, name='home'),
+    url(r'^lists/unique-list/$', view_list, name='view_list')
 )
