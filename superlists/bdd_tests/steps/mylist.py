@@ -11,9 +11,9 @@ def set_up_session(context):
     context.browser = Browser()
 
 
-@when('a new user')
+@given('a new user')
 def set_up_new_session(context):
-    set_up_new_session(context)
+    set_up_session(context)
 
 
 @when('user visits the site')
