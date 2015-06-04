@@ -17,7 +17,7 @@ Feature: Simple list interaction
         When user visits the site
         And user enters 'Buy peacock feathers'
         Then user is taken to a new URL
-        And '1. Use peacock feathers to make a fly' is in to-do list
+        And '1. Buy peacock feathers' is in to-do list
 
     Scenario: Visitor can enter two to-dos
         Given a user
