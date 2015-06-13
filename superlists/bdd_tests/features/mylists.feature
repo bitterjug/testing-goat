@@ -19,6 +19,7 @@ Feature: Simple list interaction
         Then she is taken to a new URL
         And '1. Buy peacock feathers' is in to-do list
 
+    @wip
     Scenario: Visitor can enter two to-dos
         Given Edith is a user
         And she has entered 'Buy peacock feathers'
