@@ -40,6 +40,14 @@ def at_list_url(context, user):
     )
 
 
+@then('{user1} url is not the same as {user2} url')
+def unique_urls(context, user1, user2):
+    context.tc.assertNotEqual(
+        context.browser_for(user1).url,
+        context.browser_for(user2).url
+    )
+
+
 @then('the page title and header contins \'{text}\'')
 def title_and_header_contain(context, text):
     title_content(context, text)

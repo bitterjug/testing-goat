@@ -19,7 +19,6 @@ Feature: Simple list interaction
         Then she is taken to a new URL
         And '1. Buy peacock feathers' is in to-do list
 
-    @wip
     Scenario: Visitor can enter two to-dos
         Given Edith is a user
         And she has entered 'Buy peacock feathers'
@@ -36,6 +35,7 @@ Feature: Simple list interaction
         Then 'Buy peacock feathers' is not in to-do list
 
 
+    @wip
     Scenario: Second visiter gets different url
         Given Edith is a user
         And she has entered 'Buy peacock feathers'
@@ -43,6 +43,7 @@ Feature: Simple list interaction
         When he visits the site
         And he enters 'Buy Milk'
         Then he is taken to a new URL
+        And Francis url is not the same as Edith url
         And '1. Buy Milk' is in to-do list
         And 'Buy peacock feathers' is not in to-do list
 
